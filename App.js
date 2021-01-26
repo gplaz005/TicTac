@@ -5,21 +5,14 @@ import GridBox from './GridBox';
 
 export default function App() {
 
- 
+  
   const [newgrid ,setNewGrid] = useState(Array.from({length:3}, num => Array.from({length:3}, num => null)));
 
   const [player1 , setPlayer1] = useState(true)
   const [palyer2, setPlayer2] = useState(false)
   const [winner, setWinner] = useState(false)
 
-/*if( newgrid[][] === newgrid[][] && newgrid[][] === newgrid[][] ){
-  setWinner(true)
-  if(newgrid[][] || newgrid[][] || newgrid[][] ) !=== null{
-  setWinner(true)
-}
-}*/
-
-
+  //main algorithm
   const checkWinner = () =>{
     if( newgrid[0][0] === newgrid[0][1] && newgrid[0][1] === newgrid[0][2] &&
        (newgrid[0][0] || newgrid[0][1] || newgrid[0][2] ) !== null){
@@ -54,14 +47,10 @@ export default function App() {
       setWinner(true)
     }
 
-    console.log(winner)
-    console.log(newgrid[2][0])
-    console.log(newgrid[2][1])
-    console.log(newgrid[2][2])
   }
   
+  //reset for a new game 
   const newGame = () =>{
-
     let car =[
       [null,null,null],
       [null,null,null],
@@ -71,6 +60,8 @@ export default function App() {
     setWinner(false)
   }
 
+
+  //add either X or O to game
   const handlePress = (x,y) => {
     
     let alist = [...newgrid]
@@ -94,12 +85,12 @@ export default function App() {
   
   
 
-  // [col][row]
+  // variables to pass to costume component <GridBox>
   let zero = 0
   let one = 1
   let two = 2
   
-  //console.log(grid);
+  
   return (
     
     <View style={styles.container}>
@@ -127,6 +118,8 @@ export default function App() {
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -157,10 +150,7 @@ const styles = StyleSheet.create({
     color: "#6E0DD0",
     fontSize: 38,
     alignItems: 'center',
-    textAlign: 'center',
-    fontFamily:
+    textAlign: 'center'
 }
 });
 
-
-//(newgrid.map() === 'undefined') ?  <Text> no </Text> : newgrid.map((item) => <Text>{item}</Text>)
